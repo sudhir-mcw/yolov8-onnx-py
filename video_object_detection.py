@@ -72,8 +72,8 @@ if __name__ == "__main__":
             boxes, scores, class_ids = yolov8_detector(frame)
             count += 1
     preprocess_time, postprocess_time = profiler()
-    print("\nPreprocess time per frame: ", (preprocess_time))
-    print("\nPost process time per frame: ", (postprocess_time))
+    print("\nPreprocess time per frame: ", (preprocess_time)," ms")
+    print("\nPost process time per frame: ", (postprocess_time)," ms")
 
 
 
