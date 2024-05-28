@@ -91,7 +91,12 @@ class YOLOv8:
         self.input_shape = model_inputs[0].shape
         self.input_height = self.input_shape[2]
         self.input_width = self.input_shape[3]
-
+        try:
+            self.input_height = int(self.input_shape[2])
+            self.input_width = int(self.input_shape[3])
+        except ValueError:
+            print("Unable to convert Height and width to integers")
+        
     def get_output_details(self):
         model_outputs = self.session.get_outputs()
         self.output_names = [model_outputs[i].name for i in range(len(model_outputs))]

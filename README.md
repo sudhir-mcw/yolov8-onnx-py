@@ -21,25 +21,39 @@ source myenv/bin/activate
 , otherwise use the **onnxruntime** library use ```pip install onnxruntime```.
 
 # How to run 
-1. Install the requirements
+1. Clone the repository
+```
+git clone https://github.com/sudhir-mcw/yolov8-onnx-py
+cd yolov8-onnx-py
+```
+2. Install the requirements
 ```
 pip install -r requirments.txt
 ```
-2. Download the model file and save it in models/ folder if not present already.
+3. Download the model file and save it in models/ folder if not present already.
 ```
+cd yolov8-onnx-py
 wget https://github.com/lindevs/yolov8-face/releases/latest/download/yolov8n-face-lindevs.onnx
 mkdir models
 mv yolov8n-face-lindevs.onnx models
 ```
-3. To run inference on image input run 
+Convert the onnx model input dimension from variable to fixed 
+```
+python onnx_convert_fixed_dims.py <path_to_onnx_model> <destination_path>
+```
+Example:
+```
+python onnx_convert_fixed_dims.py ./models/yolov8n-face-lindevs.onnx ./models/
+```
+4. To run inference on image input run 
 ```
 python image_object_detection.py
 ```
-4. To run inference on video input run 
+5. To run inference on video input run 
 ```
 python video_object_detection.py
 ```
-5. To run inference on webcam as input run 
+6. To run inference on webcam as input run 
 ```
 python webcam_object_detection.py
 ```
