@@ -14,6 +14,10 @@ cap = cv2.VideoCapture("test_inputs/test_video_2.mp4")
 model_path = "models/yolov8n-face-lindevs.onnx"
 yolov8_detector = YOLOv8(model_path, conf_thres=0.5, iou_thres=0.5)
 
+if len(sys.argv)==1:
+    print("Please provide the number of frames to run the model on\nUsage: python video_object_detection.py <number_of_frames>")
+    sys.exit(0)
+
 count = 0
 while cap.isOpened():
     try:
